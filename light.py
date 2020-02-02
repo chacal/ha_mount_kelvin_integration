@@ -146,7 +146,8 @@ class MountKelvinLight(Light):
         return 0
 
     async def async_turn_on(self, **kwargs):
-        await self._communicator.turn_on(self, kwargs.get('brightness', 255))
+        bri = kwargs.get('brightness', self._brightness)
+        await self._communicator.turn_on(self, bri if bri else 255)
 
     async def async_turn_off(self, **kwargs):
         await self._communicator.turn_off(self)
