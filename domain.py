@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from homeassistant.components.light import (Light, SUPPORT_BRIGHTNESS)
+from homeassistant.components.light import (LightEntity, SUPPORT_BRIGHTNESS)
 
 
-class MountKelvinLight(Light):
+class MountKelvinLight(LightEntity):
     def __init__(self, light_id, light_type, name, state, brightness, room_name, communicator):
         self._id = light_id
         self._type = light_type
