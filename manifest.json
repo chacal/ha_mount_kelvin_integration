@@ -4,5 +4,5 @@
   "version": "1.0.0",
   "dependencies": [],
   "codeowners": [],
-  "requirements": ["python-socketio[client]==4.4.0"]
+  "requirements": ["python-engineio==3.14.2","python-socketio[client]==4.6.1"]
 }
