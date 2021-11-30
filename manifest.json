@@ -1,6 +1,7 @@
 {
   "domain": "mount_kelvin",
   "name": "Mount Kelvin",
+  "version": "1.0.0",
   "dependencies": [],
   "codeowners": [],
   "requirements": ["python-socketio[client]==4.4.0"]
