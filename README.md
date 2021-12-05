@@ -2,11 +2,10 @@
 
 This repository contains a custom component for [Home Assistant](https://www.home-assistant.io/) that 
 adds support for `mount_kelvin` platform through which Home Assistant can be used to control
-lights of a [Mount Kelvin](https://www.mountkelvin.com/) system.
+lights and activate scenes of a [Mount Kelvin](https://www.mountkelvin.com/) system.
 
-This is still very much work in progress and only very rudimentary support for controlling individual
-lights has been implemented for now (meaning there is no support for Mount Kelvin scenes, schedules, 
-rooms, switches, etc.).
+This is still very much work in progress and only includes support for controlling individual
+lights and activating scenes has been implemented for now.
 
 ## Installation
 
@@ -17,11 +16,10 @@ rooms, switches, etc.).
 
 1. Add the following snippet to the Home Assistant's `configuration.yaml`
 ```
-    light:
-      - platform: mount_kelvin
+    mount_kelvin:
       api_key: <mount-kelvin-api-key>
 ```
 1. Restart Home Assistant
 
-Once started the integration queries Mount Kelvin API for all light devices and adds them as light entities
+Once started the integration queries Mount Kelvin API for all light devices and scenes. All those are added as entities
 to Home Assistant. Support for both dimmable and on/off lights has been implemented.

@@ -1,7 +1,8 @@
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, Any
 
 from homeassistant.components.light import (LightEntity, SUPPORT_BRIGHTNESS)
+from homeassistant.components.scene import Scene
 
 
 class MountKelvinLight(LightEntity):
@@ -68,3 +69,32 @@ class MountKelvinLight(LightEntity):
 class MountKelvinRoom:
     id: str
     name: str
+
+
+class MountKelvinScene(Scene):
+    def __init__(self, scene_id, name, communicator):
+        self._id = scene_id
+        self._name = name
+        self._communicator = communicator
+
+    @property
+    def unique_id(self) -> Optional[str]:
+        return self._id
+
+    @property
+    def name(self):
+        return self._name
+
+    def update_from(self, other: 'MountKelvinScene') -> bool:
+        if not self.equals(other):
+            assert self._id == other._id, 'Only same scene can be updated!'
+            self._name = other._name
+            return True
+        else:
+            return False
+
+    def equals(self, other: 'MountKelvinScene') -> bool:
+        return self._id == other._id and self._name == other._name
+
+    async def async_activate(self, **kwargs: Any) -> None:
+        await self._communicator.activate_scene(self)
